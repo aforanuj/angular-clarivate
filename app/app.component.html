@@ -1,0 +1,48 @@
+<div>
+  <span id="fullName"></span>
+  <form [formGroup]="profileForm" (ngSubmit)="onFormSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="firstName"
+        placeholder="Enter first name"
+        formControlName="firstName"
+        (keyup)="onTextInputChange($event)"
+      />
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="lastName"
+        placeholder="Enter last name"
+        formControlName="lastName"
+      />
+    </div>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        placeholder="Enter email"
+        formControlName="email"
+      />
+    </div>
+    <div class="form-group">
+      <label for="qualification">Qualification</label>
+      <button (click)="onClick()">Add qualification field</button>
+      <table>
+        <thead>
+          <tr>
+            <td>Name of degree</td>
+          </tr>
+        </thead>
+      </table>  
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
