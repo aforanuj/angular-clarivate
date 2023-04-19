@@ -16,15 +16,18 @@ export class AppComponent {
       Validators.pattern(/^[A-Za-z]+$/),
     ]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    qualification: new FormArray([]),
+    qualificationData: new FormArray([]),
   });
-
   onFormSubmit() {
     const isFormValid = this.validateForm();
     if (isFormValid > 0) {
       return;
     }
-    console.log('OnSubmit', this.profileForm.get('email'));
+    console.log('OnSubmit', this.profileForm.get('qualificationData'));
+  }
+
+  get qualificationArray() {
+    return this.profileForm.get('qualificationData') as FormArray;
   }
 
   validateForm() {
@@ -45,8 +48,17 @@ export class AppComponent {
     }
   }
 
-  onClick() {
-    let array = this.profileForm.get('qualification') as FormArray
+  createQualificationArray() {
+    let qualificationData = new FormGroup({
+      degree: new FormControl(''),
+      college: new FormControl(''),
+      percentage: new FormControl(''),
+    });
+    return qualificationData;
+  }
 
+  onClick() {
+    // let qualificationData = this.qualificationArray;
+    this.qualificationArray.push(this.createQualificationArray());
   }
 }

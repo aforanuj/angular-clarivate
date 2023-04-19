@@ -35,13 +35,49 @@
     <div class="form-group">
       <label for="qualification">Qualification</label>
       <button (click)="onClick()">Add qualification field</button>
-      <table>
+      <table class="table">
         <thead>
           <tr>
-            <td>Name of degree</td>
+            <th scope="col">Name of degree</th>
+            <th scope="col">College Name</th>
+            <th scope="col">Percentage</th>
           </tr>
         </thead>
-      </table>  
+        <tbody formArrayName="qualificationData">
+          <tr
+            *ngFor="
+              let qualification of qualificationArray.controls;
+              let i = index
+            "
+            [formGroupName]="i"
+          >
+            <td>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter degree"
+                formControlName="degree"
+              />
+            </td>
+            <td>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Enter college name"
+                formControlName="college"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                class="form-control"
+                placeholder="Enter percentage"
+                formControlName="percentage"
+              />
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
